@@ -77,19 +77,11 @@ want to compile applications using the embree library.
 	-DEMBREE_MAX_ISA:STRING="AVX512SKX" \
 	-DEMBREE_TUTORIALS:BOOL=OFF
 
-%if %{mgaversion} >= 8
-%cmake_build
-%else
 %make_build
 cd ..
-%endif
 
 %install
-%if %{mgaversion} >= 8
-%cmake_install
-%else
 %make_install -C build
-%endif
 
 # Remove installed doc files
 rm -rf %{buildroot}%{_docdir}/%{name}
