@@ -11,8 +11,8 @@
 %global		_smp_ncpus_max 2
 
 Name:		%{pkgname}%{api_version}
-Version:	3.10.0
-Release:	%mkrel 1
+Version:	3.11.0
+Release:	1
 Summary:	A collection of high-performance ray tracing kernels
 Group:		Graphics/3D
 License:	ASL 2.0
