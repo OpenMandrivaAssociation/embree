@@ -121,8 +121,6 @@ want to compile applications using the embree library.
 	-DEMBREE_ARM:BOOL=ON \
 	-DEMBREE_ISA_NEON:BOOL=ON \
 %endif
-
-
 	-DEMBREE_STATIC_LIB:BOOL=OFF \
 	-DEMBREE_TUTORIALS:BOOL=ON \
 	-DEMBREE_TESTING:BOOL=ON \
