@@ -23,7 +23,7 @@ Group:		Graphics/3D
 License:	ASL 2.0
 URL:		https://embree.github.io
 Source:		https://github.com/%{name}/%{name}/archive/v%{version}/%{name}-%{version}.tar.gz
-BuildRequires:	cmake
+BuildRequires:	cmake ninja
 %if %{with ispc} 
 BuildRequires:	ispc
 %endif
