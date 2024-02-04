@@ -86,7 +86,8 @@ want to compile applications using the embree library.
 
 %files -n %{devname}
 %license LICENSE.txt
-%doc README.md CHANGELOG.md readme.pdf third-party-programs{,-TBB,-DPCPP,-OIDN,-oneAPI-DPCPP}.txt
+%doc README.md CHANGELOG.md readme.pdf
+%doc third-party-programs{,-TBB,-DPCPP,-OIDN,-oneAPI-DPCPP}.txt
 %{_libdir}/lib%{name}%{major}.so
 %{_includedir}/%{name}%{major}/
 %{_libdir}/cmake/%{name}-%{version}/
@@ -128,16 +129,19 @@ want to compile applications using the embree library.
 %ninja_install -C build
 
 # Remove installers
-rm %{buildroot}%{_prefix}/%{name}-vars.{csh,sh}
+rm -f %{buildroot}%{_prefix}/%{name}-vars.{csh,sh}
 
 # Relocate doc files
 mv %{buildroot}%{_docdir}/%{name}4 %{buildroot}%{_docdir}/%{name}
-rm %{buildroot}%{_docdir}/%{name}/LICENSE.txt
+rm -f %{buildroot}%{_docdir}/%{name}/LICENSE.txt
+rm -f %{buildroot}%{_docdir}/%{name}/README.{md,pdf}
+rm -f %{buildroot}%{_docdir}/%{name}/CHANGELOG.md
+rm -f %{buildroot}%{_docdir}/%{name}/third-party-programs{,-TBB,-DPCPP,-OIDN,-oneAPI-DPCPP}.txt
 
 # Remove the testing products
-rm -r %{buildroot}%{_prefix}/src
-rm -r %{buildroot}%{_bindir}/models
-rm %{buildroot}%{_bindir}/embree_*
+rm -fr %{buildroot}%{_prefix}/src
+rm -fr %{buildroot}%{_bindir}/models
+rm -f  %{buildroot}%{_bindir}/embree_*
 
 %check
 pushd build
