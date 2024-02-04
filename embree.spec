@@ -13,7 +13,7 @@
 
 # limit the maximum number of parallel building processes to avoid
 # running out of memory during building
-#global		_smp_ncpus_max 2
+%global		_smp_ncpus_max 2
 
 Name:		embree
 Version:	4.3.0
@@ -36,10 +36,7 @@ BuildRequires:	pkgconfig(OpenImageIO)
 BuildRequires:	pkgconfig(tbb)
 
 #BuildRequires:	pkgconfig(freeglut)
-#BuildRequires:	pkgconfig(glfw3)
 #BuildRequires:	pkgconfig(OpenEXR)
-#BuildRequires:	pkgconfig(tbb)
-#BuildRequires:	pkgconfig(xmu)
 
 %description
 A collection of high-performance ray tracing kernels intended to
@@ -102,11 +99,11 @@ want to compile applications using the embree library.
 
 %build
 #	-DEMBREE_MAX_ISA:STRING="AVX512SKX" \
-#	-DEMBREE_COMPACT_POLYS:BOOL=ON \
 %cmake \
 	-DEMBREE_IGNORE_CMAKE_CXX_FLAGS:BOOL=OFF \
-	-DCMAKE_CXX_FLAGS_RELEASE:STRING="%{optflags}" \
-	-DCMAKE_C_FLAGS_RELEASE:STRING="%{optflags}" \
+	-DCMAKE_CXX_FLAGS_RELEASE:STRING="%{optflags} -Wl,--as-needed" \
+	-DCMAKE_C_FLAGS_RELEASE:STRING="%{optflags} -Wl,--as-needed" \
+	-DEMBREE_COMPACT_POLYS:BOOL=ON \
 	-DEMBREE_RAY_MASK:BOOL=ON \
 	-DEMBREE_BACKFACE_CULLING:BOOL=OFF \
 	-DEMBREE_FILTER_FUNCTION:BOOL=ON \
