@@ -127,8 +127,8 @@ want to compile applications using the embree library.
 %install
 %ninja_install -C build
 
-# Remove installed doc files
-rm -rf %{buildroot}%{_docdir}/%{name}
+# Remove installers
+rm %{buildroot}%{_prefix}/%{name}-vars.{csh,sh}
 
 # Relocate doc files
 mv %{buildroot}%{_docdir}/%{name}4 %{buildroot}%{_docdir}/%{name}
