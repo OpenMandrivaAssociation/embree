@@ -133,8 +133,11 @@ rm -f %{buildroot}%{_prefix}/%{name}-vars.{csh,sh}
 
 # Relocate doc files
 mv %{buildroot}%{_docdir}/%{name}4 %{buildroot}%{_docdir}/%{name}
+
+# install docs by hand
 rm -f %{buildroot}%{_docdir}/%{name}/LICENSE.txt
-rm -f %{buildroot}%{_docdir}/%{name}/README.{md,pdf}
+rm -f %{buildroot}%{_docdir}/%{name}/README.md
+rm -f %{buildroot}%{_docdir}/%{name}/readme.pdf
 rm -f %{buildroot}%{_docdir}/%{name}/CHANGELOG.md
 rm -f %{buildroot}%{_docdir}/%{name}/third-party-programs{,-TBB,-DPCPP,-OIDN,-oneAPI-DPCPP}.txt
 
