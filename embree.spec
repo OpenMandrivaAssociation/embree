@@ -16,7 +16,7 @@
 %global		_smp_ncpus_max 2
 
 Name:		embree
-Version:	4.3.0
+Version:	4.3.1
 Release:	1
 Summary:	A collection of high-performance ray tracing kernels
 Group:		Graphics/3D
