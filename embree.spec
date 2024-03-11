@@ -110,12 +110,13 @@ want to compile applications using the embree library.
 	-DEMBREE_FILTER_FUNCTION:BOOL=ON \
 	-DEMBREE_ISPC_SUPPORT:BOOL=%{?with_ispc:ON}%{!?with_ispc:OFF} \
 	-DEMBREE_MAX_ISA=NONE \
-%ifarch x86_64
+%ifarch x86_64 znver1
 	-DEMBREE_ISA_SSE2:BOOL=ON \
 	-DEMBREE_ISA_SSE4:BOOL=ON \
 	-DEMBREE_ISA_AVX:BOOL=ON \
 	-DEMBREE_ISA_AVX2:BOOL=ON \
-%else
+%endif
+%ifarch aarch64
 	-DEMBREE_ARM:BOOL=ON \
 	-DEMBREE_ISA_NEON:BOOL=ON \
 %endif
