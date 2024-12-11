@@ -4,7 +4,7 @@
 %define libname	%mklibname %{name}
 %define devname	%mklibname %{name} -d
 
-%define oldlibname_orig	%mklibname %{name} 3
+%define oldlibname_orig		%mklibname %{name} 3
 %define oldlibname		%mklibname %{name} 3 3
 %define olddevname		%mklibname -d %{name} 3
 %define oldstaticdevname	%mklibname -d -s %{name} 3
@@ -16,7 +16,7 @@
 %global		_smp_ncpus_max 2
 
 Name:		embree
-Version:	4.3.1
+Version:	4.3.3
 Release:	1
 Summary:	A collection of high-performance ray tracing kernels
 Group:		Graphics/3D
