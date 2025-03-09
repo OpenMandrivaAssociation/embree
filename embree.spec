@@ -22,7 +22,7 @@ Summary:	A collection of high-performance ray tracing kernels
 Group:		Graphics/3D
 License:	ASL 2.0
 URL:		https://embree.github.io
-Source:		https://github.com/%{name}/%{name}/archive/v%{version}/%{name}-%{version}.tar.gz
+Source:		https://github.com/embree/embree/archive/v%{version}/%{name}-%{version}.tar.gz
 BuildRequires:	cmake ninja
 %if %{with ispc} 
 BuildRequires:	ispc
@@ -74,8 +74,7 @@ Group:		Development/C
 Requires:	%{libname} = %{version}-%{release}
 #Provides:	%{name}%{api_version}-devel = %{version}-%{release}
 #Provides:	%{libname_orig}-devel = %{version}-%{release}
-Provides:	%{name}-devel = %{version}-%{release}
-Provides:	%{name}-devel = %{version}-%{release}
+Provides:	%{name}-devel = %{EVRD}
 Provides:	lib%{name}-devel = %{version}-%{release}
 Obsoletes:	%{olddevname}
 Obsoletes:	%{oldlibname_orig}-devel
