@@ -11,6 +11,10 @@
 
 %bcond_with	ispc
 
+%ifarch %{x86_64}
+%define _disable_lto 1
+%endif
+
 # limit the maximum number of parallel building processes to avoid
 # running out of memory during building
 %global		_smp_ncpus_max 2
@@ -98,7 +102,8 @@ want to compile applications using the embree library.
 %autosetup -n %{name}-%{version}
 
 %build
-#	-DEMBREE_MAX_ISA:STRING="AVX512SKX" \
+# FIXME SSE4.2 and AVX result in a linking failure, enable when fixed
+#	-DEMBREE_MAX_ISA:STRING=AVX512
 %cmake \
 	-DEMBREE_IGNORE_CMAKE_CXX_FLAGS:BOOL=OFF \
 	-DCMAKE_CXX_FLAGS_RELEASE:STRING="%{optflags} -Wl,--as-needed" \
@@ -109,11 +114,12 @@ want to compile applications using the embree library.
 	-DEMBREE_FILTER_FUNCTION:BOOL=ON \
 	-DEMBREE_ISPC_SUPPORT:BOOL=%{?with_ispc:ON}%{!?with_ispc:OFF} \
 	-DEMBREE_MAX_ISA=NONE \
-%ifarch x86_64 znver1
+%ifarch %{x86_64}
 	-DEMBREE_ISA_SSE2:BOOL=ON \
 	-DEMBREE_ISA_SSE4:BOOL=ON \
-	-DEMBREE_ISA_AVX:BOOL=ON \
-	-DEMBREE_ISA_AVX2:BOOL=ON \
+	-DEMBREE_ISA_SSE42:BOOL=OFF \
+	-DEMBREE_ISA_AVX:BOOL=OFF \
+	-DEMBREE_ISA_AVX2:BOOL=OFF \
 %endif
 %ifarch aarch64
 	-DEMBREE_ARM:BOOL=ON \
